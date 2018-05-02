@@ -140,7 +140,7 @@ int main(int argc,char *argv[]){
 
 		int count=0;
 		printf("in 10 seconds , will send to %d clinets \n",int_con_num);
-		sleep(2);
+		sleep(10);
 
 		while(count<int_con_num){
 			if(-1==(write(new_fd,hello,strlen(hello)))){
