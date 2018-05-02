@@ -60,7 +60,8 @@ void *client_thread(void* arg_trans){
     int res_con = connect(socketCon,(struct sockaddr *)(&server_addr),sizeof(struct sockaddr));
     if(res_con != 0){
         printf("连接失败\n");
-        exit(-1);
+        //exit(-1);
+        return;
     }
     
     //printf("连接成功,连接结果为：%d\n",res_con);
@@ -142,7 +143,7 @@ int main(int argc, char const *argv[])
 
         pthread_t client_sock;
         pthread_create(&client_sock,NULL,client_thread,&arg);
-        usleep(20000);//wait for 20ms
+        usleep(50000);//wait for 20ms
     }
     printf("all connect and begin to listen from server\n");
     
