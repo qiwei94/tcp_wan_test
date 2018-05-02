@@ -108,7 +108,7 @@ int main(int argc, char const *argv[])
     
     //IP:
     struct hostent *host;
-    if((host=gethostbyname(argv[1]))==NULL){
+    if((host=gethostbyname(argv[2]))==NULL){
         fprintf(stderr, "gethostbyname error\n");
         exit(1);
     }
@@ -121,13 +121,14 @@ int main(int argc, char const *argv[])
     int port_num=atoi(RAW_PORT);
     printf("port is %d\n", port_num);
 
+
     //client thread num:
     char RAW_CLIENT_THREAD_NUM[30] ;
     strncpy(RAW_CLIENT_THREAD_NUM,argv[4],sizeof(argv[4]));
     int client_thread_num=atoi(RAW_CLIENT_THREAD_NUM);
     printf("client_thread_num is %d\n", client_thread_num);
     
-    sleep(2);
+    //sleep(2);
 
 
     int i=0;
@@ -141,7 +142,7 @@ int main(int argc, char const *argv[])
 
         pthread_t client_sock;
         pthread_create(&client_sock,NULL,client_thread,&arg);
-        usleep(20000);
+        usleep(2000);
     }
     printf("all connect and begin to listen from server\n");
     
