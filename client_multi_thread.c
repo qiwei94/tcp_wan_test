@@ -1,26 +1,45 @@
 #include <stdlib.h>
-#include <sys/types.h>
-#include <stdio.h>
-#include <sys/socket.h>
 #include <string.h>
-#include <arpa/inet.h>
 #include <unistd.h>
 #include <pthread.h>
+#include <stdio.h>
+#include <errno.h>
+#include <netdb.h>
+#include <sys/socket.h>
+#include <arpa/inet.h>
+#include <sys/types.h>
+#include <netinet/in.h>
 
 #define the_server_data_length 1000
 #define live_time 4000
-#define client_thread_num 5900
 
 typedef struct MySocketInfo{
     int socketCon;
     unsigned long ipaddr;
     unsigned short port;
+    int seq_num;
 }_MySocketInfo;
+
+
+typedef struct basic_sock_info{
+    struct hostent host;
+    unsigned short port;
+    int seq_num;
+}_basic_sock_info;
+
+
 
 void *fun_thrReceiveHandler(void *socketCon);
 int checkThrIsKill(pthread_t thr);
 
-void *client_thread(int seq_num){
+
+void *client_thread(void* arg_trans){
+    _basic_sock_info arg=*((_basic_sock_info *)arg_trans);
+
+    int seq_num=arg.seq_num;
+    int port_num=arg.port;
+    struct hostent *host=&(arg.host);
+
     int socketCon = socket(AF_INET, SOCK_STREAM, 0);
     if(socketCon < 0){
         printf("创建TCP连接套接字失败\n");
@@ -31,8 +50,12 @@ void *client_thread(int seq_num){
     struct sockaddr_in server_addr;
     bzero(&server_addr,sizeof(struct sockaddr_in));
     server_addr.sin_family=AF_INET;
-    server_addr.sin_addr.s_addr=inet_addr("10.10.1.1"); /* 这里地址使用全0，即所有 */
-    server_addr.sin_port=htons(2001);
+    
+
+    //server_addr.sin_addr.s_addr=*((struct in_addr *)host->h_addr);
+    server_addr.sin_addr=*((struct in_addr *)host->h_addr);
+    
+    server_addr.sin_port=htons(port_num);
     /* 连接服务器 */
     int res_con = connect(socketCon,(struct sockaddr *)(&server_addr),sizeof(struct sockaddr));
     if(res_con != 0){
@@ -71,24 +94,53 @@ int main(int argc, char const *argv[])
 {
     printf("开始socket\n");
 
-     if(argc!=2){
+     if(argc!=5){
         fprintf(stderr, "usage %s content\n", argv[0]);
         exit(1);
         }
 
-
+    //SEQ NUM:
     char userStr[30] ;
-    // 可以录入用户操作选项，并进行相应操作
     strncpy(userStr,argv[1],sizeof(argv[1]));
-    //printf("userStr is %s \n",userStr);
-
     int seq_num=atoi(userStr);
+    printf("basic offset is %d\n", seq_num);
+    
+    
+    //IP:
+    struct hostent *host;
+    if((host=gethostbyname(argv[1]))==NULL){
+        fprintf(stderr, "gethostbyname error\n");
+        exit(1);
+    }
+
+    //printf("ip is %s\n", inet_ntoa(host);
+
+    //PORT:
+    char RAW_PORT[30] ;
+    strncpy(RAW_PORT,argv[3],sizeof(argv[3]));
+    int port_num=atoi(RAW_PORT);
+    printf("port is %d\n", port_num);
+
+    //client thread num:
+    char RAW_CLIENT_THREAD_NUM[30] ;
+    strncpy(RAW_CLIENT_THREAD_NUM,argv[4],sizeof(argv[4]));
+    int client_thread_num=atoi(RAW_CLIENT_THREAD_NUM);
+    printf("client_thread_num is %d\n", client_thread_num);
+    
+    sleep(2);
+
 
     int i=0;
     for(i=0;i<client_thread_num;i++){
         printf("%d sub client thread process begin\n", (seq_num+i));
+
+        _basic_sock_info arg;
+        arg.port=port_num;
+        arg.seq_num=seq_num+i;
+        arg.host=*host;
+
         pthread_t client_sock;
-        pthread_create(&client_sock,NULL,client_thread,(seq_num+i));
+        pthread_create(&client_sock,NULL,client_thread,&arg);
         usleep(20000);
     }
     printf("all connect and begin to listen from server\n");

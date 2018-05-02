@@ -7,8 +7,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <pthread.h>
-#define total_socket_num 5900
-#define total_thread_num 5900
+#define max_socket_num 20000
+#define max_thread_num 20000
 #define data_length 1000
 //服务器端
 
@@ -24,17 +24,33 @@ typedef struct MySocketInfo{
 }_MySocketInfo;
 
 // 客户端数组
-struct MySocketInfo arrConSocket[total_socket_num];
+struct MySocketInfo arrConSocket[max_socket_num];
 int conClientCount = 0;
 
 // 接受客户端线程列表
-pthread_t arrThrReceiveClient[total_thread_num];
+pthread_t arrThrReceiveClient[max_thread_num];
 int thrReceiveClientCount = 0;
 
-int main()
+int main(int argc, char const *argv[])
 {
     //初始化全局变量
     //memset(arrConSocket,0,sizeof(struct MySocketInfo)*10);
+
+    if(argc!=3){
+        fprintf(stderr, "usage %s content\n", argv[0]);
+        exit(1);
+        }
+
+    // get the port number
+    char con_port[30] ;
+    strncpy(con_port,argv[1],sizeof(argv[1]));
+    int port_num=atoi(con_port);
+
+    //get the connect number
+    char char_con_num[30];
+    strncpy(char_con_num,argv[2],sizeof(argv[2]));
+    int int_con_num=atoi(char_con_num);
+
 
     printf("开始socket\n");
     /* 创建TCP连接的Socket套接字 */
@@ -50,7 +66,9 @@ int main()
     bzero(&server_addr,sizeof(struct sockaddr_in));
     server_addr.sin_family=AF_INET;
     server_addr.sin_addr.s_addr=htonl(INADDR_ANY); /* 这里地址使用全0，即所有 */
-    server_addr.sin_port=htons(2001);
+    
+    server_addr.sin_port=htons(port_num);
+    
     if(bind(socketListen, (struct sockaddr *)&server_addr,sizeof(struct sockaddr)) != 0){
         perror("绑定ip地址、端口号失败\n");
         exit(-1);
@@ -84,36 +102,8 @@ int main()
         char userStr[30] = {'0'};
         char data_block[data_length];
         memset(data_block, '0', sizeof(char)*data_length);
-        
-        //printf("conClientCount is %d, conClientCount==total_socket_num?:%d\n", conClientCount,(conClientCount==total_socket_num));
-        
-
-        /*
-        printf("if u want to send ,give me D\n");
-        scanf("%s",userStr);
-        if(strcmp(userStr,"D") == 0){
-            printf("do it now!\n");
-            // 发送消息
-            int i;
-            for(i=0; i<conClientCount; i++){
-                //int sendMsg_len = send(arrConSocket[i].socketCon, userStr, 30, 0);
-                int sendMsg_len = write(arrConSocket[i].socketCon,data_block,100);
-                if(sendMsg_len > 0){
-                    printf("向%s:%d发送成功\n",arrConSocket[i].ipaddr,arrConSocket[i].port);
-                }else{
-                    printf("向%s:%d发送失败\n",arrConSocket[i].ipaddr,arrConSocket[i].port);
-                }
-            }    
-        }
-
-        printf("if u want to quit ,give me q\n");
-        scanf("%s",userStr);
-        if(strcmp(userStr,"q") == 0){
-            printf("用户选择退出！\n");
-            break;
-        }
-        */
-        if(conClientCount==total_socket_num){
+    
+        if(conClientCount==int_con_num){
             printf("GET TO THE TOTAL NUMBER,AND BEGIN TO SEND,wait for 10 seconds:\n");
             printf("data_block is %s\n", data_block);
             int i;
@@ -181,7 +171,7 @@ void *fun_thrAcceptHandler(void *socketListen){
         pthread_create(&thrReceive,NULL,fun_thrReceiveHandler,&socketInfo);
         arrThrReceiveClient[thrReceiveClientCount] = thrReceive;
         thrReceiveClientCount++;
-        if(thrReceiveClientCount==total_thread_num){
+        if(thrReceiveClientCount==max_socket_num){
             printf("IT GET TO THE HIGHEST NUMBER OF total_thread_num\n");
             break;
         }
