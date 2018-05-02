@@ -7,8 +7,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <pthread.h>
-#define total_socket_num 1000
-#define total_thread_num 1000
+#define total_socket_num 5900
+#define total_thread_num 5900
 #define data_length 1000
 //服务器端
 
@@ -152,8 +152,9 @@ void *fun_thrAcceptHandler(void *socketListen){
         int sockaddr_in_size = sizeof(struct sockaddr_in);
         struct sockaddr_in client_addr;
         int _socketListen = *((int *)socketListen);
-        //printf("accept blocking\n");
+        printf("accept blocking\n");
         int socketCon = accept(_socketListen, (struct sockaddr *)(&client_addr), (socklen_t *)(&sockaddr_in_size));
+        
         if(socketCon < 0){
             printf("连接失败\n");
         }else{
@@ -214,7 +215,7 @@ void *fun_thrReceiveHandler(void *socketInfo){
         */
         //printf("%s:%d 说：%s\n",_socketInfo.ipaddr,_socketInfo.port,buffer);
         printf("get:%s\n", buffer);
-        sleep(2);
+        sleep(10);
     }
     printf("接受数据线程结束了\n");
     return NULL;

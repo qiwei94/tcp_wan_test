@@ -9,7 +9,7 @@
 
 #define the_server_data_length 1000
 #define live_time 4000
-#define client_thread_num 1000
+#define client_thread_num 5900
 
 typedef struct MySocketInfo{
     int socketCon;
@@ -24,13 +24,14 @@ void *client_thread(int seq_num){
     int socketCon = socket(AF_INET, SOCK_STREAM, 0);
     if(socketCon < 0){
         printf("创建TCP连接套接字失败\n");
-        exit(-1);
+        //exit(-1);
+        return;
     }
     /* 填充客户端端口地址信息，以便下面使用此地址和端口监听 */
     struct sockaddr_in server_addr;
     bzero(&server_addr,sizeof(struct sockaddr_in));
     server_addr.sin_family=AF_INET;
-    server_addr.sin_addr.s_addr=inet_addr("192.168.50.61"); /* 这里地址使用全0，即所有 */
+    server_addr.sin_addr.s_addr=inet_addr("10.10.1.1"); /* 这里地址使用全0，即所有 */
     server_addr.sin_port=htons(2001);
     /* 连接服务器 */
     int res_con = connect(socketCon,(struct sockaddr *)(&server_addr),sizeof(struct sockaddr));
@@ -88,7 +89,7 @@ int main(int argc, char const *argv[])
         printf("%d sub client thread process begin\n", (seq_num+i));
         pthread_t client_sock;
         pthread_create(&client_sock,NULL,client_thread,(seq_num+i));
-        usleep(5000);
+        usleep(20000);
     }
     printf("all connect and begin to listen from server\n");
     
