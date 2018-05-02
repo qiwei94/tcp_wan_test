@@ -139,8 +139,9 @@ int main()
     }
 
     // 等待子进程退出
-    printf("等待子线程退出，即将退出！\n");
+    printf("等待子线程退出，即将退出！,wait for 100 seconds\n");
     char *message;
+    sleep(100);
     pthread_join(thrAccept,(void *)&message);
     printf("%s\n",message);
     printf("finish all  \n");
