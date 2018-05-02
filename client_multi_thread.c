@@ -142,7 +142,7 @@ int main(int argc, char const *argv[])
 
         pthread_t client_sock;
         pthread_create(&client_sock,NULL,client_thread,&arg);
-        usleep(2000);
+        usleep(20000);//wait for 20ms
     }
     printf("all connect and begin to listen from server\n");
     
