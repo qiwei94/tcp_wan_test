@@ -19,7 +19,6 @@ def task(from_recv,conn):
     res = subprocess.Popen(from_recv.decode('utf-8'),shell=True,close_fds=True)
     msg = res.stdout.read()
     if len(msg) == 0:
-        print "ready to do"
         msg = res.stderr.read()
         print msg
         conn.send(msg)
