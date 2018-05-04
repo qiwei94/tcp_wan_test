@@ -87,10 +87,13 @@ int main(int argc, char const *argv[])
     strncpy(char_send_interval,argv[4],sizeof(argv[4]));
     int int_send_interval=atoi(char_send_interval);
 
-    //get the send interval
-    char char_listen_time[30];
-    strncpy(char_listen_time,argv[5],sizeof(argv[5]));
-    int int_listen_time=atoi(char_listen_time);
+    //get the listen port
+    char char_listen_port[5];
+    strncpy(char_listen_port,argv[5],sizeof(argv[5]));
+    //int int_listen_time=atoi(char_listen_time);
+    printf("the listen port is %s\n",char_listen_port);
+
+
 
 
     printf("开始socket\n");
@@ -186,17 +189,14 @@ int main(int argc, char const *argv[])
             
             printf("file name is %s\n",tcpdump_file_name);
             
-
-            char char_listen_time_short[10];
-            sprintf(char_listen_time_short, " %d" , int_listen_time);
-            char_listen_time_short[0]='_';
             
             //char cmd[1000]="sudo /usr/sbin/tcpdump -i eth0 -s 100 tcp port \0";
             //strcat(cmd,char_port);
 
-            char cmd[1000]="sudo /usr/sbin/tcpdump -i eth0 -s 100 tcp \0";
-            //strcat(cmd,char_port);
-
+            char cmd[1000]="sudo /usr/sbin/tcpdump -i \0";
+            strcat(cmd,char_listen_port);
+            strcat(cmd," -s 100 tcp port ");
+            strcat(cmd,char_port);
             strcat(cmd," -w /home/c/tcp_wan_test/res/");
             tcpdump_file_name[0]='_';
             strcat(cmd,tcpdump_file_name);
@@ -242,18 +242,18 @@ int main(int argc, char const *argv[])
             printf("clsoe each connection!\n");
             for(i=0; i<conClientCount; i++){
                 //int sendMsg_len = send(arrConSocket[i].socketCon, userStr, 30, 0);
-                printf("end NUMBER:%d :",i);
-                int j=0;
-                printf(" to %s:%d : ",arrConSocket[i].ipaddr,arrConSocket[i].port);
+                //printf("end NUMBER:%d :",i);
+                //printf(" to %s:%d : ",arrConSocket[i].ipaddr,arrConSocket[i].port);
                 int sendMsg_len = write(arrConSocket[i].socketCon,end_data_block,5);
                 if(sendMsg_len > 0){
-                    printf("%d ",j);
+                    //printf("%d ",j);
+                    //pass;
                 }else{
-                    printf("\n %d fail \n",j);
+                    printf("\n fail \n");
                 }
                 usleep(int_send_interval);
 
-                printf("\n");
+                //printf("\n");
             }
 
 
