@@ -20,22 +20,9 @@ def sshclient_execmd(hostname='128.104.222.126', port=22, username='qiwei94', pa
       
     
 def main():  
-     
-    #hostname = '128.104.222.126'  
-    #port = 22  
-    #username = 'qiwei94'  
-    #password = '1'  
-    #execmd = "sudo rm *.pcap"  
-    #sshclient_execmd(hostname, port, username, password, execmd)  
-    #sshclient_execmd(execmd='cd /users/qiwei94/server')  
-    sshclient_execmd(execmd='ls')  
-    sshclient_execmd(execmd='touch res_file_3333_100_100_0.txt')  
-    sshclient_execmd(execmd='./server/us.o 3333 100 10 0 > res_file_3333_100_100_0.txt &')
-    
+    #sshclient_execmd(execmd='ls')  
+    #sshclient_execmd(execmd='touch res_file_3333_100_100_0.txt')  
+    sshclient_execmd(execmd='sudo ./server/us.o 3333 100 2 1000 eth0')
 
-
-
-    
-      
 if __name__ == "__main__":  
     main()  

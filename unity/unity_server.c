@@ -47,13 +47,6 @@ void *fun_packet_cap(void* void_cmd){
 
 
 
-
-
-
-
-
-
-
 int main(int argc, char const *argv[])
 {
     //初始化全局变量
@@ -181,12 +174,15 @@ int main(int argc, char const *argv[])
             char_thread_num_short[0]='_';
             strcat(tcpdump_file_name,char_thread_num_short);
 
+
             char char_time_interval[6];
             sprintf(char_time_interval, " %d" , int_send_interval);
             char_time_interval[0]='_';
             strcat(tcpdump_file_name,char_time_interval);
+            strcat(tcpdump_file_name,"_");
+            strcat(tcpdump_file_name,char_listen_port);
+
             strcat(tcpdump_file_name,".pcap");
-            
             printf("file name is %s\n",tcpdump_file_name);
             
             
@@ -197,7 +193,7 @@ int main(int argc, char const *argv[])
             strcat(cmd,char_listen_port);
             strcat(cmd," -s 100 tcp port ");
             strcat(cmd,char_port);
-            strcat(cmd," -w /home/c/tcp_wan_test/res/");
+            strcat(cmd," -w /users/qiwei94/res/");
             tcpdump_file_name[0]='_';
             strcat(cmd,tcpdump_file_name);
             //strcat(cmd," &");
@@ -207,7 +203,7 @@ int main(int argc, char const *argv[])
             pthread_t packet_cap;
             pthread_create(&packet_cap,NULL,fun_packet_cap,cmd);
 
-            printf("next???\n");
+            //printf("next???\n");
             //system("sudo /usr/sbin/tcpdump -i eth0 -s 100 tcp port -w %s",tcpdump_file_name);
 
 
