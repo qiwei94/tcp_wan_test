@@ -33,8 +33,8 @@ def remote_server():
 
 
 def main():
-	remot_cmd=link_cmd+" sudo -S ./server/us.o 3360 100 2 1000 eth0 "
-	local_cmd="./uc.o 0 128.104.222.126 3360 100 1000"
+	remot_cmd=link_cmd+" sudo -S ./server/us.o 3361 100 2 1000 eth0 "
+	local_cmd="./uc.o 0 128.104.222.126 3361 100 1000 > client_res "
 	"""
 	remote=subprocess.Popen(remot_cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 	time.sleep(20)

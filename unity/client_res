@@ -1,0 +1,824 @@
+开始socket
+basic offset is 0
+port is 3361
+client_thread_num is 100
+0 sub client thread process begin
+1 sub client thread process begin
+2 sub client thread process begin
+3 sub client thread process begin
+4 sub client thread process begin
+5 sub client thread process begin
+6 sub client thread process begin
+7 sub client thread process begin
+8 sub client thread process begin
+9 sub client thread process begin
+10 sub client thread process begin
+11 sub client thread process begin
+12 sub client thread process begin
+13 sub client thread process begin
+14 sub client thread process begin
+15 sub client thread process begin
+16 sub client thread process begin
+17 sub client thread process begin
+18 sub client thread process begin
+19 sub client thread process begin
+20 sub client thread process begin
+21 sub client thread process begin
+22 sub client thread process begin
+23 sub client thread process begin
+24 sub client thread process begin
+25 sub client thread process begin
+26 sub client thread process begin
+27 sub client thread process begin
+28 sub client thread process begin
+29 sub client thread process begin
+30 sub client thread process begin
+31 sub client thread process begin
+32 sub client thread process begin
+33 sub client thread process begin
+34 sub client thread process begin
+35 sub client thread process begin
+36 sub client thread process begin
+37 sub client thread process begin
+38 sub client thread process begin
+39 sub client thread process begin
+40 sub client thread process begin
+41 sub client thread process begin
+42 sub client thread process begin
+43 sub client thread process begin
+44 sub client thread process begin
+45 sub client thread process begin
+46 sub client thread process begin
+47 sub client thread process begin
+48 sub client thread process begin
+49 sub client thread process begin
+50 sub client thread process begin
+51 sub client thread process begin
+52 sub client thread process begin
+53 sub client thread process begin
+54 sub client thread process begin
+55 sub client thread process begin
+56 sub client thread process begin
+57 sub client thread process begin
+58 sub client thread process begin
+59 sub client thread process begin
+60 sub client thread process begin
+61 sub client thread process begin
+62 sub client thread process begin
+63 sub client thread process begin
+64 sub client thread process begin
+65 sub client thread process begin
+66 sub client thread process begin
+67 sub client thread process begin
+68 sub client thread process begin
+69 sub client thread process begin
+70 sub client thread process begin
+71 sub client thread process begin
+72 sub client thread process begin
+73 sub client thread process begin
+74 sub client thread process begin
+75 sub client thread process begin
+76 sub client thread process begin
+77 sub client thread process begin
+78 sub client thread process begin
+79 sub client thread process begin
+80 sub client thread process begin
+81 sub client thread process begin
+82 sub client thread process begin
+83 sub client thread process begin
+84 sub client thread process begin
+85 sub client thread process begin
+86 sub client thread process begin
+87 sub client thread process begin
+88 sub client thread process begin
+89 sub client thread process begin
+90 sub client thread process begin
+91 sub client thread process begin
+92 sub client thread process begin
+93 sub client thread process begin
+94 sub client thread process begin
+95 sub client thread process begin
+96 sub client thread process begin
+97 sub client thread process begin
+98 sub client thread process begin
+99 sub client thread process begin
+all connect and begin to listen from server
+send success : 7
+send success : 3
+send success : 4
+send success : 5
+send success : 10
+send success : 6
+send success : 9
+send success : 16
+send success : 18
+send success : 8
+send success : 17
+send success : 11
+send success : 14
+send success : 13
+send success : 24
+send success : 15
+send success : 23
+send success : 28
+send success : 26
+send success : 22
+send success : 25
+send success : 20
+send success : 27
+send success : 21
+send success : 32
+send success : 40
+send success : 29
+send success : 33
+send success : 12
+send success : 39
+send success : 36
+send success : 44
+send success : 35
+send success : 19
+send success : 37
+send success : 42
+send success : 43
+send success : 48
+send success : 41
+send success : 46
+send success : 52
+send success : 50
+send success : 47
+send success : 53
+send success : 49
+send success : 54
+send success : 56
+send success : 51
+send success : 59
+send success : 34
+send success : 55
+send success : 61
+send success : 31
+send success : 60
+send success : 30
+send success : 58
+send success : 66
+send success : 68
+send success : 70
+send success : 64
+send success : 57
+send success : 72
+send success : 69
+send success : 65
+send success : 38
+send success : 71
+send success : 73
+send success : 63
+send success : 76
+send success : 82
+send success : 78
+send success : 80
+send success : 45
+send success : 75
+send success : 77
+send success : 88
+send success : 86
+send success : 85
+send success : 89
+send success : 62
+send success : 84
+send success : 94
+send success : 90
+send success : 96
+send success : 92
+send success : 67
+send success : 93
+send success : 87
+send success : 95
+send success : 100
+send success : 101
+send success : 98
+send success : 99
+send success : 74
+send success : 97
+send success : 102
+send success : 79
+send success : 83
+send success : 81
+send success : 91
+7 : 1 : 1000 B
+10 : 1 : 1000 B
+3 : 1 : 1000 B
+6 : 1 : 1000 B
+5 : 1 : 1000 B
+4 : 1 : 1000 B
+18 : 1 : 1000 B
+9 : 1 : 1000 B
+16 : 1 : 1000 B
+24 : 1 : 1000 B
+8 : 1 : 1000 B
+17 : 1 : 1000 B
+28 : 1 : 1000 B
+26 : 1 : 1000 B
+13 : 1 : 1000 B
+14 : 1 : 1000 B
+23 : 1 : 1000 B
+11 : 1 : 1000 B
+15 : 1 : 1000 B
+40 : 1 : 1000 B
+27 : 1 : 1000 B
+25 : 1 : 1000 B
+32 : 1 : 1000 B
+22 : 1 : 1000 B
+20 : 1 : 1000 B
+39 : 1 : 1000 B
+33 : 1 : 1000 B
+44 : 1 : 1000 B
+21 : 1 : 1000 B
+29 : 1 : 1000 B
+36 : 1 : 1000 B
+52 : 1 : 1000 B
+35 : 1 : 1000 B
+48 : 1 : 1000 B
+42 : 1 : 1000 B
+43 : 1 : 1000 B
+41 : 1 : 1000 B
+37 : 1 : 1000 B
+46 : 1 : 1000 B
+50 : 1 : 1000 B
+54 : 1 : 1000 B
+47 : 1 : 1000 B
+53 : 1 : 1000 B
+56 : 1 : 1000 B
+61 : 1 : 1000 B
+59 : 1 : 1000 B
+66 : 1 : 1000 B
+55 : 1 : 1000 B
+12 : 1 : 1000 B
+70 : 1 : 1000 B
+49 : 1 : 1000 B
+68 : 1 : 1000 B
+60 : 1 : 1000 B
+51 : 1 : 1000 B
+72 : 1 : 1000 B
+58 : 1 : 1000 B
+69 : 1 : 1000 B
+64 : 1 : 1000 B
+19 : 1 : 1000 B
+82 : 1 : 1000 B
+71 : 1 : 1000 B
+65 : 1 : 1000 B
+57 : 1 : 1000 B
+78 : 1 : 1000 B
+73 : 1 : 1000 B
+80 : 1 : 1000 B
+76 : 1 : 1000 B
+34 : 1 : 1000 B
+94 : 1 : 1000 B
+88 : 1 : 1000 B
+89 : 1 : 1000 B
+77 : 1 : 1000 B
+63 : 1 : 1000 B
+75 : 1 : 1000 B
+86 : 1 : 1000 B
+90 : 1 : 1000 B
+96 : 1 : 1000 B
+85 : 1 : 1000 B
+31 : 1 : 1000 B
+101 : 1 : 1000 B
+30 : 1 : 1000 B
+84 : 1 : 1000 B
+100 : 1 : 1000 B
+95 : 1 : 1000 B
+93 : 1 : 1000 B
+98 : 1 : 1000 B
+92 : 1 : 1000 B
+38 : 1 : 1000 B
+102 : 1 : 1000 B
+99 : 1 : 1000 B
+97 : 1 : 1000 B
+45 : 1 : 1000 B
+87 : 1 : 1000 B
+62 : 1 : 1000 B
+67 : 1 : 1000 B
+83 : 1 : 1000 B
+79 : 1 : 1000 B
+74 : 1 : 1000 B
+81 : 1 : 1000 B
+91 : 1 : 1000 B
+7 : 2 : 1000 B
+10 : 2 : 1000 B
+18 : 2 : 1000 B
+3 : 2 : 1000 B
+6 : 2 : 1000 B
+5 : 2 : 1000 B
+4 : 2 : 1000 B
+16 : 2 : 1000 B
+9 : 2 : 1000 B
+24 : 2 : 1000 B
+28 : 2 : 1000 B
+17 : 2 : 1000 B
+8 : 2 : 1000 B
+26 : 2 : 1000 B
+40 : 2 : 1000 B
+23 : 2 : 1000 B
+13 : 2 : 1000 B
+14 : 2 : 1000 B
+27 : 2 : 1000 B
+15 : 2 : 1000 B
+32 : 2 : 1000 B
+25 : 2 : 1000 B
+39 : 2 : 1000 B
+11 : 2 : 1000 B
+44 : 2 : 1000 B
+33 : 2 : 1000 B
+20 : 2 : 1000 B
+52 : 2 : 1000 B
+36 : 2 : 1000 B
+48 : 2 : 1000 B
+29 : 2 : 1000 B
+21 : 2 : 1000 B
+42 : 2 : 1000 B
+35 : 2 : 1000 B
+54 : 2 : 1000 B
+43 : 2 : 1000 B
+50 : 2 : 1000 B
+46 : 2 : 1000 B
+41 : 2 : 1000 B
+53 : 2 : 1000 B
+61 : 2 : 1000 B
+47 : 2 : 1000 B
+59 : 2 : 1000 B
+70 : 2 : 1000 B
+66 : 2 : 1000 B
+37 : 2 : 1000 B
+56 : 2 : 1000 B
+68 : 2 : 1000 B
+49 : 2 : 1000 B
+55 : 2 : 1000 B
+60 : 2 : 1000 B
+72 : 2 : 1000 B
+82 : 2 : 1000 B
+69 : 2 : 1000 B
+51 : 2 : 1000 B
+64 : 2 : 1000 B
+58 : 2 : 1000 B
+71 : 2 : 1000 B
+78 : 2 : 1000 B
+80 : 2 : 1000 B
+65 : 2 : 1000 B
+73 : 2 : 1000 B
+94 : 2 : 1000 B
+76 : 2 : 1000 B
+12 : 2 : 1000 B
+88 : 2 : 1000 B
+89 : 2 : 1000 B
+57 : 2 : 1000 B
+77 : 2 : 1000 B
+96 : 2 : 1000 B
+86 : 2 : 1000 B
+90 : 2 : 1000 B
+85 : 2 : 1000 B
+101 : 2 : 1000 B
+75 : 2 : 1000 B
+63 : 2 : 1000 B
+100 : 2 : 1000 B
+19 : 2 : 1000 B
+84 : 2 : 1000 B
+98 : 2 : 1000 B
+93 : 2 : 1000 B
+34 : 2 : 1000 B
+92 : 2 : 1000 B
+99 : 2 : 1000 B
+102 : 2 : 1000 B
+97 : 2 : 1000 B
+87 : 2 : 1000 B
+31 : 2 : 1000 B
+30 : 2 : 1000 B
+38 : 2 : 1000 B
+62 : 2 : 1000 B
+45 : 2 : 1000 B
+79 : 2 : 1000 B
+67 : 2 : 1000 B
+83 : 2 : 1000 B
+74 : 2 : 1000 B
+81 : 2 : 1000 B
+91 : 2 : 1000 B
+95 : 2 : 1000 B
+22 : 2 : 1000 B
+buffer : exit
+7 : 3 : 5 B
+buffer : exit
+10 : 3 : 5 B
+buffer : exit
+3 : 3 : 5 B
+buffer : exit
+6 : 3 : 5 B
+buffer : exit
+4 : 3 : 5 B
+buffer : exit
+5 : 3 : 5 B
+buffer : exit
+18 : 3 : 5 B
+buffer : exit
+9 : 3 : 5 B
+buffer : exit
+16 : 3 : 5 B
+buffer : exit
+24 : 3 : 5 B
+buffer : exit
+28 : 3 : 5 B
+buffer : exit
+8 : 3 : 5 B
+buffer : exit
+17 : 3 : 5 B
+buffer : exit
+23 : 3 : 5 B
+buffer : exit
+13 : 3 : 5 B
+buffer : exit
+40 : 3 : 5 B
+buffer : exit
+14 : 3 : 5 B
+buffer : exit
+15 : 3 : 5 B
+buffer : exit
+26 : 3 : 5 B
+buffer : exit
+11 : 3 : 5 B
+buffer : exit
+27 : 3 : 5 B
+buffer : exit
+25 : 3 : 5 B
+buffer : exit
+32 : 3 : 5 B
+buffer : exit
+20 : 3 : 5 B
+buffer : exit
+39 : 3 : 5 B
+buffer : exit
+33 : 3 : 5 B
+buffer : exit
+22 : 3 : 5 B
+buffer : exit
+21 : 3 : 5 B
+buffer : exit
+44 : 3 : 5 B
+buffer : exit
+52 : 3 : 5 B
+buffer : exit
+36 : 3 : 5 B
+buffer : exit
+29 : 3 : 5 B
+buffer : exit
+42 : 3 : 5 B
+buffer : exit
+43 : 3 : 5 B
+buffer : exit
+50 : 3 : 5 B
+buffer : exit
+48 : 3 : 5 B
+buffer : exit
+46 : 3 : 5 B
+buffer : exit
+41 : 3 : 5 B
+buffer : exit
+53 : 3 : 5 B
+buffer : exit
+37 : 3 : 5 B
+buffer : exit
+61 : 3 : 5 B
+buffer : exit
+35 : 3 : 5 B
+buffer : exit
+59 : 3 : 5 B
+buffer : exit
+12 : 3 : 5 B
+buffer : exit
+54 : 3 : 5 B
+buffer : exit
+47 : 3 : 5 B
+buffer : exit
+70 : 3 : 5 B
+buffer : exit
+56 : 3 : 5 B
+buffer : exit
+66 : 3 : 5 B
+buffer : exit
+49 : 3 : 5 B
+buffer : exit
+68 : 3 : 5 B
+buffer : exit
+55 : 3 : 5 B
+buffer : exit
+60 : 3 : 5 B
+buffer : exit
+51 : 3 : 5 B
+buffer : exit
+69 : 3 : 5 B
+buffer : exit
+58 : 3 : 5 B
+buffer : exit
+72 : 3 : 5 B
+buffer : exit
+19 : 3 : 5 B
+buffer : exit
+64 : 3 : 5 B
+buffer : exit
+82 : 3 : 5 B
+buffer : exit
+65 : 3 : 5 B
+buffer : exit
+71 : 3 : 5 B
+buffer : exit
+73 : 3 : 5 B
+buffer : exit
+57 : 3 : 5 B
+buffer : exit
+80 : 3 : 5 B
+buffer : exit
+34 : 3 : 5 B
+buffer : exit
+94 : 3 : 5 B
+buffer : exit
+77 : 3 : 5 B
+buffer : exit
+76 : 3 : 5 B
+buffer : exit
+78 : 3 : 5 B
+buffer : exit
+75 : 3 : 5 B
+buffer : exit
+88 : 3 : 5 B
+buffer : exit
+86 : 3 : 5 B
+buffer : exit
+63 : 3 : 5 B
+buffer : exit
+85 : 3 : 5 B
+buffer : exit
+89 : 3 : 5 B
+buffer : exit
+96 : 3 : 5 B
+buffer : exit
+90 : 3 : 5 B
+buffer : exit
+101 : 3 : 5 B
+buffer : exit
+31 : 3 : 5 B
+buffer : exit
+100 : 3 : 5 B
+buffer : exit
+30 : 3 : 5 B
+buffer : exit
+93 : 3 : 5 B
+buffer : exit
+92 : 3 : 5 B
+buffer : exit
+98 : 3 : 5 B
+buffer : exit
+84 : 3 : 5 B
+buffer : exit
+102 : 3 : 5 B
+buffer : exit
+38 : 3 : 5 B
+buffer : exit
+99 : 3 : 5 B
+buffer : exit
+95 : 3 : 5 B
+buffer : exit
+97 : 3 : 5 B
+buffer : exit
+62 : 3 : 5 B
+buffer : exit
+87 : 3 : 5 B
+buffer : exit
+67 : 3 : 5 B
+buffer : exit
+45 : 3 : 5 B
+buffer : exit
+79 : 3 : 5 B
+buffer : exit
+74 : 3 : 5 B
+buffer : exit
+81 : 3 : 5 B
+buffer : exit
+91 : 3 : 5 B
+buffer : exit
+83 : 3 : 5 B
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server got fail
+buffer : exit
+93 : 4 : 16777215 B
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server got fail
+buffer : exit
+100 : 4 : 16777215 B
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server got fail
+buffer : exit
+61 : 4 : 16777215 B
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server got fail
+buffer : exit
+9 : 4 : 16777215 B
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server got fail
+buffer : exit
+43 : 4 : 16777215 B
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server got fail
+buffer : exit
+35 : 4 : 16777215 B
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+server close
+退出接受服务器数据线程
+yes finish all client thread
