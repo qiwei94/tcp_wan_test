@@ -64,7 +64,7 @@ void *client_thread(void* arg_trans){
     if(res_con != 0){
         printf("连接失败\n");
         //exit(-1);
-        return;
+        return NULL;
     }
     
     //printf("连接成功,连接结果为：%d\n",res_con);
@@ -84,13 +84,10 @@ void *client_thread(void* arg_trans){
     //开启新的实时接受数据线程
     pthread_t thrReceive;
     pthread_create(&thrReceive,NULL,fun_thrReceiveHandler,&socketCon);
-
-    /* 实时发送数据 */
-
-    //printf("waiting for this %d seconds\n",live_time);
-    sleep(live_time);
+    char *message;
+    pthread_join(thrReceive,(void *)&message);
     close(socketCon);
-
+    return NULL;
 }
 
 
@@ -142,6 +139,9 @@ int main(int argc, char const *argv[])
 
 
     int i=0;
+    pthread_t threads[client_thread_num];
+
+
     for(i=0;i<client_thread_num;i++){
         printf("%d sub client thread process begin\n", (seq_num+i));
 
@@ -154,10 +154,17 @@ int main(int argc, char const *argv[])
         pthread_t client_sock;
         pthread_create(&client_sock,NULL,client_thread,&arg);
         usleep(int_connect_interval);//wait for 20ms
+        threads[i]=client_sock;
     }
     printf("all connect and begin to listen from server\n");
-    
-    sleep(live_time);
+
+    for(i=0;i<client_thread_num;i++){
+        pthread_t client_sock=threads[i];
+        char *message;
+        pthread_join(client_sock,(void *)&message);
+    }
+
+    //sleep(live_time);
     printf("yes finish all client thread\n");
     return 0;
 }
@@ -173,11 +180,20 @@ void *fun_thrReceiveHandler(void *socketCon){
     while(1){
         int buffer_length = read(_socketCon,buffer,the_server_data_length);
         if(buffer_length == 0){
-            printf("服务器端异常关闭\n");
+            printf("server close\n");
             //exit(-1);
             break;
         }else if(buffer_length < 0){
-            printf("接受客户端数据失败\n");
+            printf("server got fail\n");
+            //break;
+        }
+
+        if(buffer_length<10){
+            printf("buffer : %s\n", buffer);
+        }
+        
+        if(buffer=="exit"){
+            printf("got exit signal,%s\n",buffer);
             break;
         }
         count++;

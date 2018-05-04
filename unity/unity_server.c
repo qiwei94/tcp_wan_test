@@ -7,6 +7,8 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <pthread.h>
+//#include <system>
+
 #define max_socket_num 20000
 #define max_thread_num 20000
 #define data_length 1000
@@ -31,12 +33,33 @@ int conClientCount = 0;
 pthread_t arrThrReceiveClient[max_thread_num];
 int thrReceiveClientCount = 0;
 
+
+
+int exit_conn_num=0;
+
+void *fun_packet_cap(void* void_cmd){
+    char* cmd = (char*)void_cmd;
+    system(cmd);
+    printf("接受数据线程结束了\n");
+    return NULL;
+}
+
+
+
+
+
+
+
+
+
+
+
 int main(int argc, char const *argv[])
 {
     //初始化全局变量
     //memset(arrConSocket,0,sizeof(struct MySocketInfo)*10);
 
-    if(argc!=5){
+    if(argc!=6){
         fprintf(stderr, "usage %s content\n", argv[0]);
         exit(1);
         }
@@ -50,6 +73,8 @@ int main(int argc, char const *argv[])
     char char_con_num[30];
     strncpy(char_con_num,argv[2],sizeof(argv[2]));
     int int_con_num=atoi(char_con_num);
+    exit_conn_num=int_con_num;
+
 
     //get each thread send times
     char char_thread_send[30];
@@ -62,6 +87,10 @@ int main(int argc, char const *argv[])
     strncpy(char_send_interval,argv[4],sizeof(argv[4]));
     int int_send_interval=atoi(char_send_interval);
 
+    //get the send interval
+    char char_listen_time[30];
+    strncpy(char_listen_time,argv[5],sizeof(argv[5]));
+    int int_listen_time=atoi(char_listen_time);
 
 
     printf("开始socket\n");
@@ -99,6 +128,7 @@ int main(int argc, char const *argv[])
     pthread_create(&thrAccept,NULL,fun_thrAcceptHandler,&socketListen);
 
     /* 实时发送数据 */
+    int flag=0;
     while(1){
         //判断线程存活多少
         int i;
@@ -120,7 +150,68 @@ int main(int argc, char const *argv[])
             printf("data_block is %s\n", data_block);
             printf("the send interval is %d us\n", int_send_interval);
             int i;
-            sleep(10);
+            
+
+            printf("ready to tcpdump:\n");
+            
+            char gap_flag[2];
+            gap_flag[0]='_';
+            gap_flag[1]='\0';
+            char tcpdump_file_name[30];
+
+
+            char char_port[6];
+            sprintf(char_port, " %d" , port_num);
+            //char_port[strlen(char_port)-1]=0;
+            //char_port[0]='_';
+            strcat(tcpdump_file_name,char_port);
+        
+
+            char char_con_num_short[6];
+            sprintf(char_con_num_short, " %d" , int_con_num);
+            char_con_num_short[0]='_';
+            strcat(tcpdump_file_name,char_con_num_short);
+            
+
+            char char_thread_num_short[6];
+            sprintf(char_thread_num_short, " %d" , int_thread_send);
+            char_thread_num_short[0]='_';
+            strcat(tcpdump_file_name,char_thread_num_short);
+
+            char char_time_interval[6];
+            sprintf(char_time_interval, " %d" , int_send_interval);
+            char_time_interval[0]='_';
+            strcat(tcpdump_file_name,char_time_interval);
+            strcat(tcpdump_file_name,".pcap");
+            
+            printf("file name is %s\n",tcpdump_file_name);
+            
+
+            char char_listen_time_short[10];
+            sprintf(char_listen_time_short, " %d" , int_listen_time);
+            char_listen_time_short[0]='_';
+            
+            //char cmd[1000]="sudo /usr/sbin/tcpdump -i eth0 -s 100 tcp port \0";
+            //strcat(cmd,char_port);
+
+            char cmd[1000]="sudo /usr/sbin/tcpdump -i eth0 -s 100 tcp \0";
+            //strcat(cmd,char_port);
+
+            strcat(cmd," -w /home/c/tcp_wan_test/res/");
+            tcpdump_file_name[0]='_';
+            strcat(cmd,tcpdump_file_name);
+            //strcat(cmd," &");
+            printf("cmd is %s\n", cmd);
+            
+            //system(cmd);
+            pthread_t packet_cap;
+            pthread_create(&packet_cap,NULL,fun_packet_cap,cmd);
+
+            printf("next???\n");
+            //system("sudo /usr/sbin/tcpdump -i eth0 -s 100 tcp port -w %s",tcpdump_file_name);
+
+
+            sleep(2);
             for(i=0; i<conClientCount; i++){
                 //int sendMsg_len = send(arrConSocket[i].socketCon, userStr, 30, 0);
                 printf("NUMBER:%d :",i);
@@ -138,20 +229,54 @@ int main(int argc, char const *argv[])
                 }
                 printf("\n");
             }
-        printf("WE FINISH IT !\n");
+            printf("WE FINISH IT !\n");
+            
+            //pthread_exit(&packet_cap);
+            sleep(5);
+            system("sudo pkill -SIGTERM tcpdump");
+            printf("the packet cap process finished too!\n");
+            flag=1000;
+
+            char end_data_block[5]="exit\0";
+
+            printf("clsoe each connection!\n");
+            for(i=0; i<conClientCount; i++){
+                //int sendMsg_len = send(arrConSocket[i].socketCon, userStr, 30, 0);
+                printf("end NUMBER:%d :",i);
+                int j=0;
+                printf(" to %s:%d : ",arrConSocket[i].ipaddr,arrConSocket[i].port);
+                int sendMsg_len = write(arrConSocket[i].socketCon,end_data_block,5);
+                if(sendMsg_len > 0){
+                    printf("%d ",j);
+                }else{
+                    printf("\n %d fail \n",j);
+                }
+                usleep(int_send_interval);
+
+                printf("\n");
+            }
+
+
             break;
         }
 
 
         // 发送消息
         sleep(1);
+        if (flag==1000)
+        {
+            break;
+        }
     }
 
     // 等待子进程退出
     printf("等待子线程退出，即将退出！,wait for 100 seconds\n");
     char *message;
-    sleep(100);
+    sleep(3);
+    printf("the conClientCount is %d\n", conClientCount);
+    printf("the exit_conn_num is %d\n", exit_conn_num);
     pthread_join(thrAccept,(void *)&message);
+    //pthread_exit(&thrAccept);
     printf("%s\n",message);
     printf("finish all  \n");
     return 0;
@@ -190,7 +315,7 @@ void *fun_thrAcceptHandler(void *socketListen){
         pthread_create(&thrReceive,NULL,fun_thrReceiveHandler,&socketInfo);
         arrThrReceiveClient[thrReceiveClientCount] = thrReceive;
         thrReceiveClientCount++;
-        if(thrReceiveClientCount==max_socket_num){
+        if(conClientCount>=exit_conn_num){
             printf("IT GET TO THE HIGHEST NUMBER OF total_thread_num\n");
             break;
         }

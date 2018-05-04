@@ -31,7 +31,11 @@ def main():
     sshclient_execmd(execmd='ls')  
     sshclient_execmd(execmd='touch res_file_3333_100_100_0.txt')  
     sshclient_execmd(execmd='./server/us.o 3333 100 10 0 > res_file_3333_100_100_0.txt &')
-      
+    
+
+
+
+    
       
 if __name__ == "__main__":  
     main()  
