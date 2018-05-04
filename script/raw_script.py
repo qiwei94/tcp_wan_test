@@ -32,30 +32,61 @@ def remote_server():
 
 
 
-def main():
-	remot_cmd=link_cmd+" sudo -S ./server/us.o 3361 100 2 1000 eth0 "
-	local_cmd="./uc.o 0 128.104.222.126 3361 100 1000 > client_res "
-	"""
-	remote=subprocess.Popen(remot_cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-	time.sleep(20)
-	local=subprocess.Popen(local_cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-	"""
+def run_test(ip='128.104.222.126',\
+			port=2000,\
+			client_conn_interval=10000,\
+			res_name='client_res',\
+			conn_num=1000,\
+			conn_times=1,\
+			send_interval=1000,\
+			eth_port="eth0"):
 
-	remote=subprocess.Popen(remot_cmd,shell=True)
+	remote_cmd=link_cmd+" sudo -S ./server/us.o "+str(port)+" "+str(conn_num)+" "+str(conn_times)+" "+str(send_interval)+" "+str(eth_port)
+	local_cmd="./uc.o 0 "+str(ip)+" "+str(port)+" "+str(conn_num)+" "+str(client_conn_interval)+" > "+res_name
+
+	print remote_cmd
+	print local_cmd
 	
+	remote=subprocess.Popen(remote_cmd,shell=True)
 	time.sleep(10)
-	
 	local=subprocess.Popen(local_cmd,shell=True,cwd="/home/c/tcp_wan_test/unity",stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-	
-	
-	while True:
-		local.stdout.flush()
-    	print "local::::::",local.stdout.readlines()
-    	time.sleep(1)
-	
-#ssh -t qiwei94@128.104.222.126 sudo -S ./server/us.o 3333 100 2 1000 eth0
-	
+	remote.wait();
+	local.wait()
+	print "both finished bye...."
+
+
+
+def main():
+	port_seq=[2000,3000,4000]
+	conn_num_seq=[1,500,1000]
+	conn_times_seq=[1000,2,1]
+	for i in range(3):
+		port_basic=port_seq[i]
+		conn_num=conn_num_seq[i]
+		conn_times=conn_times_seq[i]
+		for j in range(10):
+			port=port_basic+j
+			run_test(port=port,conn_num=conn_num,conn_times=conn_times)
+			time.sleep(10)
 
 
 if __name__ == '__main__':
 	main()
+
+
+
+
+#remot_cmd=link_cmd+" sudo -S ./server/us.o 3362 100 2 1000 eth0 "
+#	local_cmd="./uc.o 0 128.104.222.126 3362 100 1000 > client_res "
+#	"""
+#	#remote=subprocess.Popen(remot_cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+#	#time.sleep(20)
+#	#local=subprocess.Popen(local_cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+#	"""
+#	remote=subprocess.Popen(remot_cmd,shell=True)
+#	time.sleep(10)
+#	local=subprocess.Popen(local_cmd,shell=True,cwd="/home/c/tcp_wan_test/unity",stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+#	remote.wait();
+#	local.wait()
+#	print "both finished bye...."
+
