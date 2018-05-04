@@ -57,7 +57,7 @@ def run_test(ip='128.104.222.126',\
 
 
 def main():
-	port_seq=[2000,3000,4000]
+	port_seq=[3000,4000,5000]
 	conn_num_seq=[1,500,1000]
 	conn_times_seq=[1000,2,1]
 	for i in range(3):
