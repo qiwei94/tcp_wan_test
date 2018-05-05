@@ -67,7 +67,7 @@ def process(file_dir):
 		print "............................................."
 
 def main():
-	process('/home/c/tcp_wan_test/res/res')
+	process('/home/c/tcp_wan_test/res/cubic_res/res')
 
 
 if __name__ == '__main__':

@@ -9,10 +9,12 @@ import multiprocessing
 from subprocess import Popen,PIPE
 import sys 
 
-#user_ip='128.104.222.126'
-#user_name="qiwei94"
-#paasswd="1"
-
+user_ip='128.104.222.126'
+user_name="qiwei94"
+paasswd="1"
+server_work_cwd='/users/qiwei94/server'
+local_work_cwd='/home/c/tcp_wan_test/unity'
+front_name='cubic'
 
 #user_ip='101.200.181.242'
 #user_name="root"
@@ -21,14 +23,14 @@ import sys
 #local_work_cwd='/home/c/tcp_wan_test/unity'
 #front_name=''
 
-
+"""
 user_ip='128.104.222.140'
 user_name="qiwei94"
 paasswd='1'
 server_work_cwd='/users/qiwei94/server'
 local_work_cwd='/home/c/tcp_wan_test/unity'
 front_name='bbr'
-
+"""
 
 convenient_privilege=" echo "+paasswd+"| "
 link_cmd=" ssh -t "+user_name+"@"+user_ip
@@ -65,18 +67,18 @@ def run_test(ip=user_ip,\
 
 
 def main():
-	port_seq=[3000,4000,5000]
-	conn_num_seq=[1,500,1000]
-	conn_times_seq=[1000,2,1]
-	#port_seq=[6000]
-	#conn_num_seq=[1000]
-	#conn_times_seq=[1]
+	#port_seq=[3000,4000,5000]
+	#conn_num_seq=[1,500,1000]
+	#conn_times_seq=[1000,2,1]
+	port_seq=[5004]
+	conn_num_seq=[1000]
+	conn_times_seq=[1]
 
-	for i in range(3):
+	for i in range(len(port_seq)):
 		port_basic=port_seq[i]
 		conn_num=conn_num_seq[i]
 		conn_times=conn_times_seq[i]
-		for j in range(10):
+		for j in range(6):
 			port=port_basic+j
 			run_test(port=port,conn_num=conn_num,conn_times=conn_times)
 			time.sleep(10)
