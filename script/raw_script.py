@@ -9,14 +9,29 @@ import multiprocessing
 from subprocess import Popen,PIPE
 import sys 
 
+#user_ip='128.104.222.126'
+#user_name="qiwei94"
+#paasswd="1"
 
+
+#user_ip='101.200.181.242'
+#user_name="root"
+#paasswd="8266Cs.123"
+#server_work_cwd='/home'
+#local_work_cwd='/home/c/tcp_wan_test/unity'
+#front_name=''
+
+
+user_ip='128.104.222.140'
 user_name="qiwei94"
-paasswd="1"
-#user_ip="192.168.50.61"
-user_ip='128.104.222.126'
+paasswd='1'
+server_work_cwd='/users/qiwei94/server'
+local_work_cwd='/home/c/tcp_wan_test/unity'
+front_name='bbr'
 
-convenient_privilege=" echo "+paasswd+"|"
-link_cmd="ssh -t "+user_name+"@"+user_ip
+
+convenient_privilege=" echo "+paasswd+"| "
+link_cmd=" ssh -t "+user_name+"@"+user_ip
 
 
 def ssh_link():
@@ -24,24 +39,17 @@ def ssh_link():
     print "result="
     print result
 
-def local_client():
-	os.system("./home/c/tcp_wan_test/unity/uc.o 0 128.104.222.126 3316 100 1000")
 
-def remote_server():
-	os.system("%s sudo -S ./server/us.o 3316 100 2 1000 eth0 " % link_cmd)
-
-
-
-def run_test(ip='128.104.222.126',\
+def run_test(ip=user_ip,\
 			port=2000,\
 			client_conn_interval=10000,\
 			res_name='client_res',\
 			conn_num=1000,\
 			conn_times=1,\
-			send_interval=1000,\
+			send_interval=0,\
 			eth_port="eth0"):
 
-	remote_cmd=link_cmd+" sudo -S ./server/us.o "+str(port)+" "+str(conn_num)+" "+str(conn_times)+" "+str(send_interval)+" "+str(eth_port)
+	remote_cmd=link_cmd+" sudo -S ./server/us.o "+str(port)+" "+str(conn_num)+" "+str(conn_times)+" "+str(send_interval)+" "+str(eth_port)+" "+str(front_name)+" "
 	local_cmd="./uc.o 0 "+str(ip)+" "+str(port)+" "+str(conn_num)+" "+str(client_conn_interval)+" > "+res_name
 
 	print remote_cmd
@@ -60,6 +68,10 @@ def main():
 	port_seq=[3000,4000,5000]
 	conn_num_seq=[1,500,1000]
 	conn_times_seq=[1000,2,1]
+	#port_seq=[6000]
+	#conn_num_seq=[1000]
+	#conn_times_seq=[1]
+
 	for i in range(3):
 		port_basic=port_seq[i]
 		conn_num=conn_num_seq[i]

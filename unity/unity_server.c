@@ -52,10 +52,15 @@ int main(int argc, char const *argv[])
     //初始化全局变量
     //memset(arrConSocket,0,sizeof(struct MySocketInfo)*10);
 
-    if(argc!=6){
+    if(argc!=7){
         fprintf(stderr, "usage %s content\n", argv[0]);
         exit(1);
         }
+
+    // get the front name
+    char front_name[30] ;
+    strncpy(front_name,argv[6],sizeof(argv[6]));
+
 
     // get the port number
     char con_port[30] ;
@@ -154,12 +159,11 @@ int main(int argc, char const *argv[])
             gap_flag[0]='_';
             gap_flag[1]='\0';
             char tcpdump_file_name[30];
-
-
+            strcat(tcpdump_file_name,front_name);
             char char_port[6];
             sprintf(char_port, " %d" , port_num);
             //char_port[strlen(char_port)-1]=0;
-            //char_port[0]='_';
+            char_port[0]='_';
             strcat(tcpdump_file_name,char_port);
         
 
@@ -192,9 +196,13 @@ int main(int argc, char const *argv[])
             char cmd[1000]="sudo /usr/sbin/tcpdump -i \0";
             strcat(cmd,char_listen_port);
             strcat(cmd," -s 100 tcp port ");
+            char_port[0]=' ';
             strcat(cmd,char_port);
             strcat(cmd," -w /users/qiwei94/res/");
-            tcpdump_file_name[0]='_';
+            
+            int front_name_len=strlen(front_name);
+            tcpdump_file_name[front_name_len]='_';
+            
             strcat(cmd,tcpdump_file_name);
             //strcat(cmd," &");
             printf("cmd is %s\n", cmd);
